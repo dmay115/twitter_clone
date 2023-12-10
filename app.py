@@ -261,6 +261,12 @@ def like_message(msg_id):
     return redirect("/")
 
 
+@app.route("/users/<int:user_id>/liked")
+def show_liked(user_id):
+    user = User.query.get_or_404(user_id)
+    return render_template("/users/liked.html", user=user)
+
+
 @app.route("/users/delete", methods=["POST"])
 def delete_user():
     """Delete user."""
